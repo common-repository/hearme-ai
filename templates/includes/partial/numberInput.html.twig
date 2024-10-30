@@ -1,0 +1,10 @@
+<div class="settings__wrapper">
+	<div class="settings__section settings__section--title">
+		<h2 class="settings__title">{{title}}</h2>
+		<p class='settings__description'>{{ description }}</p>
+	</div>
+	<div class='settings__section settings__section--input'>
+		<input type="number" id="{{ field }}" class="settings__input settings__input--number" name="hear_me_options[{{ field }}]" value="{{ value }}" min='1'/>
+	</div>
+</div>
+<p style="color: red">{{ error }}</p>

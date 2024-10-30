@@ -1,0 +1,26 @@
+{
+    "name": "hearme.ai/wordpress",
+    "type": "project",
+    "config": {
+        "platform": {
+            "php": "7.2.5"
+        }
+    },
+    "authors": [
+        {
+            "name": "HearMe.ai",
+            "email": "hello@hearme.ai"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.0",
+        "twig/twig": "^3.0",
+        "haydenpierce/class-finder": "^0.4.3",
+        "symfony/dotenv": "^5.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "HearMe\\": "src/"
+        }
+    }
+}

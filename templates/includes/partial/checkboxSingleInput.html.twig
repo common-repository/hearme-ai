@@ -1,0 +1,13 @@
+<div class="settings__wrapper">
+	<div class="settings__section settings__section--title">
+		<h2 class="settings__title">{{title}}</h2>
+		<p class='settings__description'>{{ description }}</p>
+	</div>
+	<div class='settings__section settings__section--input'>
+		<label class="settings__container">
+				<input type="checkbox" id="{{field}}" class='settings__checkbox' name="hear_me_options[{{ field }}][]" value="1" {% if value is same as( '1' ) %} checked {% endif %}>
+				<span class='settings__checkmark'> </span>
+		</label>
+	</div>
+</div>
+<p style="color: red">{{ error }}</p>

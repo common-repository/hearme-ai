@@ -1,0 +1,19 @@
+<div class="hear_me_wizard">
+	<h1>
+		{{ wizard_title }}</h1>
+	<div class="hear_me_wizard__content">
+		<div class="hear_me_wizard__header">
+			<span id='wizard_step_text' class="hear_me_wizard__step-text"></span>
+			<h2 id='wizard_title' class="hear_me_wizard__title">
+				{{ wizard_titles | raw }}
+			</h2>
+		</div>
+		<form id="wizard_form" class="hear_me_wizard__form" method="post" action='admin.php?page=hear-me-settings'>
+			{{ formContent | raw}}
+		</form>
+		<div class="hear_me_wizard__buttons">
+			<button id="wizard_finish_button" class="hear_me_wizard__button hear_me_wizard__button--white hear_me_wizard__button--api">{{ button_finish}}</button>
+			<button id="wizard_next" class="hear_me_wizard__button hear_me_wizard__button--black">{{ button_next }}</button>
+		</div>
+	</div>
+</div>

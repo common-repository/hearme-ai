@@ -1,0 +1,19 @@
+<div class="settings__wrapper">
+	<div class="settings__section settings__section--title">
+		<h2 class="settings__title">{{title}}</h2>
+		<p class='settings__description'>{{ description }}</p>
+	</div>
+	<div class='settings__section settings__section--input'>
+		{% if post_types %}
+			{% for item in post_types %}
+			<label class="settings__container">{{ item.label }} 
+					<input type="checkbox" id="{{item.name}}" class='settings__checkbox' name="hear_me_options[{{ field }}][]" value={{ item.name }} {% if item.name in options %} checked {% endif %}>
+					<span class='settings__checkmark'> </span>
+			</label>
+			{% endfor %}
+		{% else %}
+			<p>That option will be available when you add custom posts to your site</p>
+		{% endif %}
+	</div>
+</div>
+<p style="color: red">{{ error }}</p>

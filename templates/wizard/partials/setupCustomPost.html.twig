@@ -1,0 +1,22 @@
+<div id="wizard_step_3" class="hear_me_wizard__step">
+
+	{% if post_types %}
+		<h2 class="hear_me_wizard__step__title">
+			{{ step_title }}
+		</h2>
+
+		<div class="hear_me_wizard__step__checkboxes">
+			{% for item in post_types %}
+				<div class="hear_me_wizard__step__checkbox">
+					<label class="hear_me_wizard__step__checkbox_label" for={{ item.name }}>{{ item.label }}
+						<input type="checkbox" id="{{ item.name }}" class="hear_me_wizard__step__checkbox_input" name="hear_me_options[{{ field }}][]" value="{{ item.name }}" {% if item.name in options %} checked {% endif %}>
+					</label>
+				</div>
+			{% endfor %}
+		</div>
+	{% else %}
+		<h2 class="hear_me_wizard__step__title">
+			There is no custom posts types right now. Please go to next step.
+		</h2>
+	{% endif %}
+</div>

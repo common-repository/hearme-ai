@@ -1,0 +1,41 @@
+<div id="hear_me">
+	<div id="hear_me_first_generate" class="hear_me_step" {% if episode %} style="display: none" {% endif %}>
+		<p>{{ 'episode_not_generated' | translate }}</p>
+	</div>
+
+	<div id="hear_me_next_generate" class="hear_me_step" {% if not episode or episode.isPublished or episode.status == 'generating' %} style="display: none;" {% endif %}>
+		<p>
+			{{ 'draft_generated' | translate }}
+		</p>
+
+		<button class="hear_me_generate_episode hear_me_button" data-post-id="{{ post_id }}">{{ 'generate_episode_button' | translate }}</button>
+		<a class="hear_me_edit_button hear_me_button secondary" target="_blank" href="{{ episode.editorUrl }}">{{ 'edit_episode_button' | translate }}</a>
+	</div>
+
+	<div id="hear_me_generating_episode" class="hear_me_step" {% if not episode or episode.status != 'generating' %} style="display: none{% endif %}">
+		<h3>{{ 'generating_episode' | translate }}</h3>
+		<div id="hear_me_loading_animation">
+			<div class="pulse-spinner"></div>
+		</div>
+	</div>
+
+	<div id="hear_me_generated" class="hear_me_step" {% if not episode.isPublished %} style="display: none" {% endif %}>
+		<h3>{{ 'episode_generated_and_published' | translate }}</h3>
+
+		<p>{{ 'hear_episode' | translate }}</p>
+
+		<div id="hear_me_player_wrapper">
+			<div id="hearme-player"></div>
+		</div>
+
+		<p>{{ 'draft_generated' | translate }}</p>
+		<!-- BUTTONS HERE -->
+	</div>
+
+	<div id="hear_me_cost_calculate_episode" class="hear_me_step" style="display: none">
+		<h3>{{ 'generating_episode_draft' | translate }}</h3>
+		<div id="hear_me_loading_animation">
+			<div class="pulse-spinner"></div>
+		</div>
+	</div>
+</div>

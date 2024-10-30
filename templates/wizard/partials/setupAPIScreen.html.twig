@@ -1,0 +1,10 @@
+<div id="wizard_step_1" class="hear_me_wizard__step">
+	<h2 class="hear_me_wizard__step__title">
+		{{ step_title | raw }}
+		<a href={{app_url}} class="hear_me_wizard__step__link" target="_blank">
+			{{ app_url_title }}</a>
+	</h2>
+
+	<input type="text" id="{{ field }}" class="hear_me_wizard__step__input hear_me_wizard__step__input--api" placeholder="Ener API key here" name="hear_me_options[{{ field }}]" value="{{ value }}"/>
+	<p id="{{ field }}_error" class="hear_me_wizard__step__api-error">{{ error }}</p>
+</div>

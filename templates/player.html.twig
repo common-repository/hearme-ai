@@ -1,0 +1,12 @@
+<script defer src="data:text/javascript,
+    (function() {
+      if (document.querySelector('body.home')) return;
+      let player = new hearme.Player({
+        selector: '%23hearme-player',
+        style: {{ playerStyle|replace({'"':'\'', '#':'%23'}) | raw }},
+        audio: '{{ playerAudio }}',
+        audioTitle: '{{ audioTitle|replace({'"':'\''}) }}',
+      });
+    })();
+">
+</script>

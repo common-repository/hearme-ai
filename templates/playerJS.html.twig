@@ -1,0 +1,9 @@
+(function() {
+  let player = new hearme.Player({
+    selector: '%23hearme-player',
+    style: {{ playerStyle|replace({'"':'\'', '#':'%23'}) | raw }},
+    audio: '{{ playerAudio }}',
+    audioTitle: '{{ audioTitle|replace({'"':'\''}) }}',
+  });
+})();
+const html = '<div id="hearme-player"></div>';

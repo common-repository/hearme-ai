@@ -1,0 +1,17 @@
+<div class="settings__wrapper">
+	<div class="settings__section settings__section--title">
+		<h2 class="settings__title">{{title}}</h2>
+		<p class='settings__description'>{{ description }}</p>
+	</div>
+	<div class="settings__section settings__section--select hear_me_wizard__step__radio_buttons">
+	{% for labelOption, valueOption in options %}
+		<div class="hear_me_wizard__step__radio_single">
+			<label id="label_{{valueOption}}" for="{{valueOption}}" class="hear_me_wizard__step__radio_label {% if value == valueOption %} hear_me_wizard__step__radio_label--checked  {% endif %}">{{ labelOption }}
+				<input id='{{ valueOption }}' type="radio" name="hear_me_options[{{ field }}]" id="{{ field }}" {% if value == valueOption %} checked {% endif %} value={{ valueOption }}>
+				<img src="{{ assetsPath }}{{ valueOption }}.png" class="hear_me_wizard__step__image" alt="{{ valueOption }}">
+			</label>
+		</div>
+	{% endfor %}
+	</div>
+</div>
+<p style="color: red">{{ error }}</p>

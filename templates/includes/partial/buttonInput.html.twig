@@ -1,0 +1,66 @@
+<div class="settings__wrapper">
+	<div class="settings__section settings__section--title">
+		<h2 class="settings__title">{{title}}</h2>
+	</div>
+	<div class="settings__section settings__section--input">
+		{% if isApiKey %}
+			<button type="button" class='settings__button' id="generate_draft_for_all_posts">{{ description }}</button>
+			<p id="generate_draft_for_all_posts_progress"></p>
+		{% else %}
+			This option will be available after you provide API key above and save settings
+		{% endif %}
+	</div>
+</div>
+<p style="color: red">{{ error }}</p>
+
+<script>
+	(($) => {
+let iterator = 1;
+let iteratorLimit = {{ postLimit }};
+let processesPosts = 0;
+let noOfNotChangedPosts = 0;
+let progress = $('#generate_draft_for_all_posts_progress');
+let generateDrafts = function () {
+$.ajax({
+url: hear_me_settings.rest.send_all_drafts,
+method: 'POST',
+beforeSend: function (xhr) {
+xhr.setRequestHeader('X-WP-Nonce', hear_me_settings.nonce);
+},
+data: {
+page: iterator
+}
+}).done((data) => {
+	noOfNotChangedPosts += data.no_change;
+	processesPosts += data.processes_posts;
+	progress.text(`Processing ${processesPosts} of ${
+	data.all_posts
+} posts`);
+
+iterator++;
+
+if (iteratorLimit == iterator) {
+progress.text(`Sent last ${iterator} posts!`);
+} else if (data.finish !== true) {
+generateDrafts();
+} else {
+	if(noOfNotChangedPosts !== 0) {
+		const processed = data.all_posts - noOfNotChangedPosts;
+		progress.text(`Sent ${processed} of ${data.all_posts} published posts! (${noOfNotChangedPosts} posts without change)`);
+	} else {
+		progress.text(`Sent all ${data.all_posts} posts!`);
+	}
+}
+});
+};
+
+$(document).ready(() => {
+$('#generate_draft_for_all_posts').on('click', (event) => {
+iterator = 1;
+processesPosts = 0;
+progress.text(`Processing ...`);
+generateDrafts();
+});
+});
+})(jQuery);
+</script>
